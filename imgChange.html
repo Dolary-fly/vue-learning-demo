@@ -1,0 +1,55 @@
+<html>
+
+<head>
+	<link rel="stylesheet" href="./css/imgChange.css" />
+</head>
+
+<body>
+	<div id="main">
+		<a class="direction" v-show="index!=0">
+			<img src="./img/left.png" @click="indexdec" />
+		</a>
+		<img v-bind:src="imgArr[index]" class=" contentImg">
+		<a class="direction" v-show="index!=imgArr.length-1">
+			<img src="./img/right.png" @click="indexadd" />
+		</a>
+	</div>
+
+	<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el: "#main",
+			data: {
+				index: 0,
+				imgArr: [
+					"./img/contents/01.jpg",
+					"./img/contents/02.jpg",
+					"./img/contents/03.jpg",
+					"./img/contents/04.jpg",
+					"./img/contents/05.jpg",
+					"./img/contents/06.jpg",
+					"./img/contents/07.jpg"
+				]
+			},
+			methods: {
+				indexdec: function () {
+					if (this.index > 0) {
+						this.index--;
+					} else {
+						alert("已是第一张！");
+					}
+				},
+				indexadd: function () {
+					if (this.index < this.imgArr.length - 1) {
+						this.index++;
+					} else {
+						alert("已是最后一张！");
+					}
+				}
+			},
+		})
+	</script>
+</body>
+
+</html>

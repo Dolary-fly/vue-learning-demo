@@ -1,0 +1,21 @@
+.inputdiv {
+  width: 250px;
+  height: 30px;
+}
+
+ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+.todo {
+  width: 250px;
+  height: 40px;
+  border-bottom: 1px solid black;
+  line-height: 50px;
+  list-style-type: none;
+}
+
+.button {
+  margin-left: 100px;
+}
