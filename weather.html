@@ -1,0 +1,52 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="./css/weather.css">
+</head>
+
+<body>
+
+	<div id="app">
+		<input type="text" v-model="city" @keyup.enter="getweather" id="cityinput" />
+		<button @click="getweather">搜索</button>
+		<ul>
+			<li v-for="(item,index) in weatherArr" class="weatherlist">
+				<div class="weatherday">
+					<h4 class="wordstyle">{{item.type}}</h4>
+					<p class="wordstyle">{{item.low}}-{{item.high}}</p>
+					<p class="wordstyle">{{item.date}}</p>
+				</div>
+
+			</li>
+		</ul>
+	</div>
+	<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<!-- 使用cdn方式 -->
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				city: '',
+				weatherArr: [],
+			},
+			methods: {
+				getweather: function () {
+					console.log(this.city);
+					var that = this;
+					axios.get('http://wthrcdn.etouch.cn/weather_mini?city=' + this.city).then(function (
+						response) {
+						console.log(response.data.data.forecast);
+						that.weatherArr = response.data.data.forecast;
+					})
+				}
+			}
+		})
+	</script>
+
+</body>
+
+</html>

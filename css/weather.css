@@ -1,0 +1,30 @@
+.weatherlist {
+	list-style: none;
+	float: left;
+}
+
+.weatherday {
+	width: 160px;
+	border-right: 1px solid rgb(204, 86, 44);
+
+}
+
+.wordstyle {
+	text-align: center;
+}
+
+ul {
+	border: 0px;
+	padding: 0px;
+}
+
+button {
+
+	border: 1px solid transparent;
+	outline: none;
+}
+
+input {
+	outline: none;
+	background: none;
+}
