@@ -1,0 +1,64 @@
+<!-- 功能：
+  歌曲搜索
+  歌曲播放
+  歌曲封面
+  歌曲评论
+  播放动画
+  mv播放 -->
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="./css/musin.css">
+</head>
+
+<body>
+
+	<div id="app">
+		<div class="searchbar">
+			<img src="./img/logo.png" class="logo">
+			<input type="text" class="searchinput" v-model="keywords" @keyup.enter="searchsong" />
+		</div>
+		<div class="center">
+			<div class="song">
+				<ul class="song_list">
+					<li class="song_li" v-for="(item,index) in songsarr">
+						<a @click="playsong(item.id,item.album.id)"></a>
+						<b>{{item.name}}</b>
+						<span>
+							<i></i>
+						</span>
+					</li>
+				</ul>
+				<img src="https://i.loli.net/2020/03/23/dor23bhZtIvK17X.png" alt="" class="switch_btn">
+			</div>
+			<div class="player_con">
+				<img src="https://i.loli.net/2020/03/23/gZHko2WlpJNcGPv.png" class="swichimg" />
+				<img :src="zjcover" class="coverimg autoRotate" />
+				<img src="https://i.loli.net/2020/03/23/hQPuH4gNRx7XayI.png" class="bottomimg autoRotate" />
+			</div>
+			<div class="comment">
+				<dl v-for="(item,index) in commentarr">
+					<dt>
+						<img :src="item.user.avatarUrl" class="commentimg" />
+					</dt>
+					<dd class="nickname">{{item.user.nickname}}</dd>
+					<dd class="commentcot">{{item.content}}</dd>
+
+				</dl>
+			</div>
+		</div>
+		<div class="foot">
+			<audio controls="controls" v-bind:src="songurl" class="songaudio"></audio>
+		</div>
+	</div>
+	<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<!-- 使用cdn方式 -->
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+	<script src="./js/music.js"></script>
+
+</body>
+
+</html>
